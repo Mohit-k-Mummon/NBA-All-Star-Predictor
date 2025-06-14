@@ -8,17 +8,20 @@ training_df = pd.read_csv("./nba_allstar_training_data.csv")
 
 model_data = joblib.load('./All-Star Predictor.joblib')
 model = model_data['model']
+accuracy = model_data['accuracy']
 
 
 st.write("""
 # NBA All-Star Prediction App
          
-This app predicts whether an NBA Player will be an **All-Star**!
+This is an interactive **Streamlit web app** that predicts whether an NBA player will be 
+selected as an All-Star based on their performance statistics. It uses a trained machine learning model to make real-time predictions and visualize NBA player data.
          
 Click the Chevron Icon in the top left corner to adjust the NBA Players stats
          
-Dataset used: https://www.kaggle.com/datasets/sumitrodatta/nba-aba-baa-stats?select=Player+Per+Game.csv
+Dataset used to train the model: https://www.kaggle.com/datasets/sumitrodatta/nba-aba-baa-stats?select=Player+Per+Game.csv
 """)
+st.write(f"Model Accuracy: {round(accuracy, 4) * 100}%")
 
 st.sidebar.header('Player Stats Parameters')
 
